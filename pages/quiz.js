@@ -1,27 +1,30 @@
+import React from 'react';
 import db from '../db.json';
-import QuizHead from '../src/components/QuizHead';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import Widget from '../src/components/Widget';
-import QuizButton from '../src/components/QuizButton';
+import QuizImage from '../src/components/QuizImage';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 
 export default function Home() {
+
+    let urlParameters = new URLSearchParams(window.location.search);
+    let name = urlParameters.get('name');
+
     return (
         <QuizBackground backgroundImage={db.bg}>
-            <QuizHead ogImageUrl={db.bg} ogTitle={db.title} />
             <QuizContainer>
                 <QuizLogo />
                 <Widget>
                     <Widget.Header>
                         <h1>{db.title}</h1>                        
                     </Widget.Header>
+                    <QuizImage />
                     <Widget.Content>
-                        <h2>Em Breve</h2>
-                        <p>Perguntas em desenvolvimento</p>
-                        <QuizButton titleLink="Voltar" urlLink="/" />
+                        <p>Jogador: {name} </p>                      
+                        <p>Perguntas em desenvolvimento</p>                        
                     </Widget.Content>
                 </Widget>
                 <Footer />

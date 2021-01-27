@@ -8,10 +8,11 @@ import QuizImage from '../src/components/QuizImage';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 
-export default function Home() {
+import { useRouter } from 'next/router';
 
-    let urlParameters = new URLSearchParams(window.location.search);
-    let name = urlParameters.get('name');
+export default function Home() {
+    const router = useRouter();
+    const { name } = router.query;
 
     return (
         <QuizBackground backgroundImage={db.bg}>
